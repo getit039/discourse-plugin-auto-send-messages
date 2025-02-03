@@ -1,0 +1,1 @@
+# discourse-plugin-auto-send-messages
