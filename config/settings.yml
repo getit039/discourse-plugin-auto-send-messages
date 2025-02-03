@@ -1,0 +1,38 @@
+plugins:
+  auto_send_messages_enabled:
+    default: true
+    type: bool
+
+  auto_send_messages_messages_limit_per_run:
+    default: 1000
+    type: integer
+
+  auto_send_messages_order_type:
+    default: "by_last_seen"
+    type: enum
+    choices:
+      - by_last_seen
+      - by_created_at
+
+  auto_send_messages_order:
+    default: "asc"
+    type: enum
+    choices:
+      - asc
+      - desc
+
+  auto_send_messages_message_subject:
+    default: "Hello from Discourse!"
+    type: string
+
+  auto_send_messages_message_body:
+    default: "This is a test private message sent via PostCreator!"
+    type: text
+
+  auto_send_messages_sender_username:
+    default: "jacob-thepros"
+    type: string
+
+  auto_send_messages_unique_marker_key:
+    default: "my_campaign_2025"
+    type: string
