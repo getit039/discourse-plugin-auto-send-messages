@@ -206,7 +206,12 @@ after_initialize do
   ]
 
   settings.each do |setting|
-    SiteSetting.defaults["auto_send_messages_#{setting}"] = ""
+    setting_name = "auto_send_messages_#{setting}"
+    if !SiteSetting.respond_to?(setting_name)
+      SiteSetting.define_singleton_method(setting_name) do
+        ""
+      end
+    end
   end
 
   # Register API Route to Trigger Sending Messages
