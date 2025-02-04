@@ -1,0 +1,20 @@
+<button class="btn btn-primary" id="sendMessagesButton">
+  Send Messages Now
+</button>
+
+<script>
+document.getElementById("sendMessagesButton").addEventListener("click", function() {
+  fetch("/admin/plugins/auto_send_messages/trigger", {
+    method: "POST",
+    headers: { "X-CSRF-Token": document.querySelector("meta[name=csrf-token]").content }
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      alert("Messages sent successfully!");
+    } else {
+      alert("Error sending messages: " + data.error);
+    }
+  });
+});
+</script>

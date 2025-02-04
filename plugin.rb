@@ -161,23 +161,56 @@
 # authors: Xavier Garzon
 # url: https://github.com/getit039/discourse-plugin-auto-send-messages
 
-enabled_site_setting :auto_send_messages_enabled
+# enabled_site_setting :auto_send_messages_enabled
 
-PLUGIN_NAME = "auto_send_messages"
+# PLUGIN_NAME = "auto_send_messages"
+
+# after_initialize do
+#   module ::AutoSendMessages
+#     class Engine < ::Rails::Engine
+#       engine_name PLUGIN_NAME
+#       isolate_namespace AutoSendMessages
+#     end
+#   end
+
+#   AutoSendMessages::Engine.routes.draw do
+#     post "/trigger" => "trigger#execute"
+#   end
+
+#   Discourse::Application.routes.append do
+#     mount ::AutoSendMessages::Engine, at: "/auto_send_messages"
+#   end
+# end
+
+# frozen_string_literal: true
+
+enabled_site_setting :auto_send_messages_enabled
 
 after_initialize do
   module ::AutoSendMessages
-    class Engine < ::Rails::Engine
-      engine_name PLUGIN_NAME
-      isolate_namespace AutoSendMessages
-    end
+    PLUGIN_NAME = "auto_send_messages"
   end
 
-  AutoSendMessages::Engine.routes.draw do
-    post "/trigger" => "trigger#execute"
+  # Register Admin UI Route
+  add_admin_route "Auto Send Messages", "auto_send_messages"
+
+  # Register plugin settings
+  settings = %w[
+    messages_limit_per_run
+    order_type
+    order
+    message_subject
+    message_body
+    sender_username
+    unique_marker_key
+  ]
+
+  settings.each do |setting|
+    SiteSetting.defaults["auto_send_messages_#{setting}"] = ""
   end
 
+  # Register API Route to Trigger Sending Messages
   Discourse::Application.routes.append do
-    mount ::AutoSendMessages::Engine, at: "/auto_send_messages"
+    post "/admin/plugins/auto_send_messages/trigger" => "auto_send_messages/trigger#execute"
   end
 end
