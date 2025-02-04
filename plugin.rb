@@ -181,5 +181,3 @@ after_initialize do
     mount ::AutoSendMessages::Engine, at: "/auto_send_messages"
   end
 end
-
-frozen_string_literal: true
