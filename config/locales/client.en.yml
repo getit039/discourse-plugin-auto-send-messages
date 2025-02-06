@@ -1,0 +1,5 @@
+en:
+  js:
+    auto_send_messages:
+      title: "Auto Send Messages"
+      trigger: "Trigger Messages"

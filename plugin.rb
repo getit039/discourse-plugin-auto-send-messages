@@ -12,7 +12,7 @@ after_initialize do
   end
 
   # Register Admin UI Route
-  add_admin_route "Auto Send Messages", "auto-send-messages"
+  add_admin_route "auto_send_messages.title", "auto-send-messages"
 
   # Register plugin settings
   settings = %w[
