@@ -26,8 +26,9 @@ after_initialize do
   ]
 
   settings.each do |setting|
-    SiteSetting.defaults["auto_send_messages_#{setting}"] = ""
+    SiteSetting.set("auto_send_messages_#{setting}", "")
   end
+  
 
   # Register API Route to Trigger Sending Messages
   Discourse::Application.routes.append do
