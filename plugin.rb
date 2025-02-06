@@ -1,4 +1,4 @@
-# name: auto-send-messages
+# name: discourse-auto-send-messages
 # about: A simple plugin to send private messages to users based on the last_seen or created_at date
 # version: 0.0.1
 # authors: Xavier Garzon
