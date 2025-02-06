@@ -3,20 +3,20 @@
 <form {{on "submit" this.triggerMessages}}>
   <label for="messages_limit">Messages Limit</label>
   <Input @value={{this.messagesLimit}} id="messages_limit" />
-  
+
   <label for="order_type">Order Type</label>
   <select @value={{this.orderType}} id="order_type">
     <option value="by_last_seen">By Last Seen</option>
     <option value="by_created_at">By Created At</option>
   </select>
-  
+
   <label for="order">Order</label>
   <select @value={{this.order}} id="order">
     <option value="asc">Ascending</option>
     <option value="desc">Descending</option>
   </select>
-  
+
   <p>Click the button below to manually trigger message sending:</p>
-  
-  <DButton @label="Trigger Messages" @action={{this.triggerMessages}} @icon="paper-plane" @class="btn-primary"/>
+
+  <DButton @label="Trigger Messages" @icon="paper-plane" @class="btn-primary"/>
 </form>

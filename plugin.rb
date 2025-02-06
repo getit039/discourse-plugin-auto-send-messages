@@ -12,7 +12,7 @@ after_initialize do
   end
 
   # Register Admin UI Route
-  add_admin_route "Auto Send Messages", "auto_send_messages"
+  add_admin_route "Auto Send Messages", "auto-send-messages"
 
   # Register plugin settings
   settings = %w[
@@ -28,10 +28,10 @@ after_initialize do
   settings.each do |setting|
     SiteSetting.set("auto_send_messages_#{setting}", SiteSetting.defaults["auto_send_messages_#{setting}"] || nil)
   end  
-  
 
-  # Register API Route to Trigger Sending Messages
+  # Register Admin Page and API Route
   Discourse::Application.routes.append do
+    get "/admin/plugins/auto-send-messages" => "admin/plugins#index", constraints: StaffConstraint.new
     post "/admin/plugins/auto_send_messages/trigger" => "auto_send_messages/trigger#execute"
   end
 end
