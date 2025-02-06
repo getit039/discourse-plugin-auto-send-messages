@@ -16,7 +16,7 @@ export default class AdminPluginsAutoSendMessagesController extends Controller {
     event.preventDefault();
 
     try {
-      await ajax("/admin/plugins/auto-send-messages/trigger", {
+      await ajax("/admin/plugins/auto_send_messages/trigger", {
         method: "POST",
         data: {
           messages_limit: this.messagesLimit,

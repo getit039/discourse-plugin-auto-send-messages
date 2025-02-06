@@ -32,6 +32,6 @@ after_initialize do
   # Register Admin Page and API Route
   Discourse::Application.routes.append do
     get "/admin/plugins/auto-send-messages" => "admin/plugins#index", constraints: StaffConstraint.new
-    post "/admin/plugins/auto-send-messages/trigger" => "auto-send-messages/trigger#execute"
+    post "/admin/plugins/auto-send-messages/trigger" => "auto_send_messages/trigger#execute"
   end
 end
