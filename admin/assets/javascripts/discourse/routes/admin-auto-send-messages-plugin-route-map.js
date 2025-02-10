@@ -1,10 +1,7 @@
 export default {
-    resource: "admin.adminPlugins.show",
-  
-    path: "/plugins",
-  
-    map() {
-      this.route("auto-send-messages-settings", { path: "auto-send-messages" });
-    },
-  };
-  
+  resource: "admin.adminPlugins.show",
+  path: "/plugins",
+  map() {
+    this.route("auto-send-messages", { path: "auto-send-messages" });
+  },
+};
