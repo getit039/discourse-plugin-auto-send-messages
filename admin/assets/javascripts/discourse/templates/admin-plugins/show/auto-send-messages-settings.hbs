@@ -1,0 +1,24 @@
+<div class="auto-send-messages-settings">
+  <DPageHeader @title={{i18n "auto_send_messages.title"}} />
+
+  <DPageSubheader>
+    <p>{{i18n "auto_send_messages.description"}}</p>
+  </DPageSubheader>
+
+  <div class="control-group">
+    <label>{{i18n "auto_send_messages.messages_limit"}}</label>
+    <Input @type="number" @value={{this.messages_limit}} />
+  </div>
+
+  <div class="control-group">
+    <label>{{i18n "auto_send_messages.order_type"}}</label>
+    <Select @options={{this.orderTypes}} @value={{this.order_type}} />
+  </div>
+
+  <div class="control-group">
+    <label>{{i18n "auto_send_messages.order"}}</label>
+    <Select @options={{this.orderOptions}} @value={{this.order}} />
+  </div>
+
+  <DButton @label={{i18n "auto_send_messages.save"}} @action={{this.saveSettings}} @class="btn-primary" />
+</div>
